@@ -1,0 +1,32 @@
+galaxy_info:
+  role_name: 'install_and_configure_etcd'
+  namespace: 'johanneskastl'
+  author: 'Johannes Kastl'
+  description: 'Install and configure etcd'
+  company: 'B1 Systems GmbH'
+
+  license: 'BSD-3-Clause'
+
+  min_ansible_version: 2.4
+
+  platforms:
+    - name: EL
+      versions:
+        - 7
+        - 8
+    - name: Fedora
+      versions:
+        - all
+    - name: opensuse
+      versions:
+        - all
+    - name: SLES
+      versions:
+        - all
+    - name: Rocky
+      versions:
+        - 8
+
+  galaxy_tags: []
+
+dependencies: []
