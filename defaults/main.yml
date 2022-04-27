@@ -1,0 +1,5 @@
+---
+# install_and_configure_etcd/defaults/main.yml
+
+systemd_unit_name: 'etcd.service'
+sysconfig_file_path: '/etc/sysconfig/etcd'
