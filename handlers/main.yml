@@ -1,0 +1,7 @@
+---
+# install_and_configure_etcd/handlers/main.yml
+
+- name: 'restart the etcd service'
+  ansible.builtin.service:
+    name: "{{ systemd_unit_name }}"
+    state: 'restarted'
