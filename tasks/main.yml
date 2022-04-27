@@ -1,0 +1,23 @@
+---
+# install_and_configure_etcd/tasks/main.yml
+
+- name: 'Install the etcd package'
+  ansible.builtin.package:
+    name: "{{ package_name }}"
+    state: 'present'
+
+- name: "Create {{ sysconfig_file_path }}"
+  ansible.builtin.template:
+    src: 'etc_sysconfig_etcd.j2'
+    dest: "{{ sysconfig_file_path }}"
+    owner: 'root'
+    group: 'root'
+    mode: '0600'
+  notify:
+    - 'restart the etcd service'
+
+- name: 'Start and enable the etcd service'
+  ansible.builtin.service:
+    name: "{{ systemd_unit_name }}"
+    state: 'started'
+    enabled: 'true'
