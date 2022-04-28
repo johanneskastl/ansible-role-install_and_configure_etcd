@@ -1,0 +1,6 @@
+#
+# {{ ansible_managed }}
+#
+[Service]
+ExecStart=
+ExecStart=/bin/bash -c "GOMAXPROCS=$(nproc) /usr/sbin/etcd --enable-v2=true"
