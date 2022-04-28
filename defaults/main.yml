@@ -5,6 +5,12 @@ systemd_unit_name: 'etcd.service'
 package_name: 'etcd'
 sysconfig_file_path: '/etc/sysconfig/etcd'
 
+# whether the v2 api should be enabled
+# https://etcd.io/docs/v3.4/upgrades/upgrade_3_4/
+# etcd --enable-v2=false is now the default.
+# This means, unless etcd --enable-v2=true is specified, etcd v3.4 server would not serve v2 API requests.
+enable_api_v2: 'false'
+
 # etcd defaults
 
 etcd_name: 'default'
