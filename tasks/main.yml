@@ -1,6 +1,11 @@
 ---
 # install_and_configure_etcd/tasks/main.yml
 
+- name: 'Create systemd drop-in if v2 needs to be enabled'
+  ansible.builtin.include_tasks: enable_api_v2.yml
+  when:
+    - 'enable_api_v2 | bool'
+
 - name: 'Install the etcd package'
   ansible.builtin.package:
     name: "{{ package_name }}"
