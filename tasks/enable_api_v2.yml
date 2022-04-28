@@ -1,0 +1,21 @@
+---
+# install_and_configure_etcd/tasks/enable_api_v2.yml
+
+- name: "Create directory {{ systemd_unit_path }}/{{ systemd_unit_name }}.d/"
+  ansible.builtin.file:
+    path: "{{ systemd_unit_path }}/{{ systemd_unit_name }}.d/"
+    state: 'directory'
+    owner: 'root'
+    group: 'root'
+    mode: '0755'
+
+- name: 'Create systemd drop-in if v2 needs to be enabled'
+  ansible.builtin.template:
+    src: 'systemd_drop-in_enable_v2_api.conf.j2'
+    dest: "{{ systemd_unit_path }}/{{ systemd_unit_name }}.d/enable_v2_api.conf"
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+  notify:
+    - 'Trigger systemctl daemon-reload'
+    - 'restart the etcd service'
