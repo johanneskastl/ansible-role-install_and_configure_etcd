@@ -1,0 +1,5 @@
+---
+# install_and_configure_etcd/vars/vars_Suse.yml
+
+sysconfig_file_path: '/etc/sysconfig/etcd'
+etcd_data_dir: '/var/lib/etcd/default.etcd'

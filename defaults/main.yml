@@ -4,7 +4,6 @@
 systemd_unit_name: 'etcd.service'
 systemd_unit_path: '/etc/systemd/system'
 package_name: 'etcd'
-sysconfig_file_path: '/etc/sysconfig/etcd'
 
 # whether the v2 api should be enabled
 # https://etcd.io/docs/v3.4/upgrades/upgrade_3_4/
@@ -15,7 +14,6 @@ enable_api_v2: 'false'
 # etcd defaults
 
 etcd_name: 'default'
-etcd_data_dir: '/var/lib/etcd/default.etcd'
 etcd_listen_peer_urls: 'http://localhost:2380'
 etcd_listen_client_urls: 'http://localhost:2379'
 etcd_advertise_client_urls: 'http://localhost:2379'
