@@ -13,7 +13,37 @@ None.
 Role Variables
 --------------
 
-None.
+## General settings (in theory OS-dependent, but should be the same on most operating systems)
+
+- `systemd_unit_path`: path used for systemd drop-ins (default: `/etc/systemd/system`)
+- `systemd_unit_name`: name of the systemd service (default: `etcd.service`)
+- `package_name`: name of the package to install (default: `etcd`)
+
+## really OS-dependent settings
+
+- `sysconfig_file_path`: path to the configuration file containing the environment variables (automatically set depending on the OS used)
+- `etcd_data_dir`: etcd data directory (automatically set depending on the OS used)
+
+## etcd v2 AP
+- `enable_api_v2`: in case you need to enable the v2 API that was disabled in etcd 3.4, you can set this variable to 'true' and it will be re-enabled
+
+## etcd settings with defaults
+
+These variables have sensible defaults, but should most probably be overwritten by the user.
+
+- `etcd_name`: name of the etcd cluster (default: `default`)
+- `etcd_listen_peer_urls`: List of URLs to listen on for peer traffic (default: `http://localhost:2380`)
+- `etcd_listen_client_urls`: List of URLs to listen on for client traffic (default: `http://localhost:2379`)
+- `etcd_advertise_client_urls`: List of client URLs (of the actual node we are configuring) to advertise to the public (default: `http://localhost:2379`)
+
+## etcd settings without a default
+
+These settings are only used if the user has defined the variables.
+
+- `etcd_initial_advertise_peer_urls`: List of peer URLs (of the actual node we are configuring) to advertise to the rest of the cluster (most probably something like `http://localhost:2380` or `http://192.168.1.2:2380`)
+- `etcd_initial_cluster`: initial cluster configuration for bootstrapping, something like `default=http://localhost:2380`
+- `etcd_initial_cluster_state`: initial cluster state ('new' or 'existing')
+- `etcd_initial_cluster_token`: initial cluster token for the etcd cluster during bootstrap. Specifying this can protect you from unintended cross-cluster interaction when running multiple clusters
 
 Dependencies
 ------------
