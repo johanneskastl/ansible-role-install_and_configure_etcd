@@ -18,6 +18,11 @@
     name: "{{ package_name }}"
     state: 'present'
 
+- name: 'Install the etcdctl package'
+  ansible.builtin.package:
+    name: "{{ etcdctl_package_name }}"
+    state: 'present'
+
 - name: "Create {{ sysconfig_file_path }}"
   ansible.builtin.template:
     src: 'etc_sysconfig_etcd.j2'
