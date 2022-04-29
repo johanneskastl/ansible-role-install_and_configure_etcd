@@ -50,12 +50,21 @@ Dependencies
 
 None
 
-Example Playbook
-----------------
+Example Playbook for a single server
+------------------------------------
 
-    - hosts: servers
+    - hosts: server1
       roles:
         - role: 'johanneskastl.install_and_configure_etcd'
+        enable_api_v2: 'true'
+        etcd_name: 'my_cluster'
+        etcd_listen_peer_urls: "http://{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}:2380,http://127.0.0.1:7001"
+        etcd_listen_client_urls: "http://{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}:2379,http://localhost:2379"
+        etcd_initial_advertise_peer_urls: "http://{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}:2380"
+        etcd_initial_cluster: "my_cluster=http://{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}:2380"
+        etcd_advertise_client_urls: "http://{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}:2379"
+        etcd_initial_cluster_state: 'new'
+        etcd_initial_cluster_token: 'some_token'
 
 License
 -------
