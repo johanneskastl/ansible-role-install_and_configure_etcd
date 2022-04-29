@@ -4,6 +4,7 @@
 systemd_unit_name: 'etcd.service'
 systemd_unit_path: '/etc/systemd/system'
 package_name: 'etcd'
+etcdctl_package_name: 'etcdctl'
 
 # whether the v2 api should be enabled
 # https://etcd.io/docs/v3.4/upgrades/upgrade_3_4/
