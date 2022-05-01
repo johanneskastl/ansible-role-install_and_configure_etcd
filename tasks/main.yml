@@ -8,6 +8,9 @@
     - "vars_{{ ansible_distribution | replace(' ', '_' ) }}.yml"
     - "vars_{{ ansible_os_family }}.yml"
 
+- name: 'Run pre-flight checks'
+  ansible.builtin.include_tasks: preflight_checks.yml
+
 - name: 'Create systemd drop-in if v2 needs to be enabled'
   ansible.builtin.include_tasks: enable_api_v2.yml
   when:
