@@ -45,6 +45,8 @@ These settings are only used if the user has defined the variables.
 - `etcd_initial_cluster_state`: initial cluster state ('new' or 'existing')
 - `etcd_initial_cluster_token`: initial cluster token for the etcd cluster during bootstrap. Specifying this can protect you from unintended cross-cluster interaction when running multiple clusters
 
+## Multi-node cluster
+
 In case you want to setup a cluster of etcd servers, you can omit the variables `etcd_name` and `etcd_initial_cluster` and only the `etcd_servers_group`:
 
 - `etcd_servers_group`: name of a Ansible group of hosts, which will be used as servers for etcd
