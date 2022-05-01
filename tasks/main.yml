@@ -1,7 +1,7 @@
 ---
 # install_and_configure_etcd/tasks/main.yml
 
-- name: "Load variables"
+- name: 'Load variables'
   ansible.builtin.include_vars: "{{ item }}"
   with_first_found:
     - "vars_{{ ansible_distribution | replace(' ', '_' ) }}{{ ansible_distribution_major_version }}.yml"
