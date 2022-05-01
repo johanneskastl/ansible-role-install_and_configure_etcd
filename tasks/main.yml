@@ -11,6 +11,12 @@
 - name: 'Run pre-flight checks'
   ansible.builtin.include_tasks: preflight_checks.yml
 
+- name: 'Assemble etcd_initial_cluster from user-supplied group of servers'
+  ansible.builtin.include_tasks: prepare_server_list_for_etcd_initial_cluster.yml
+  when:
+    - 'etcd_initial_cluster is undefined'
+    - 'etcd_servers_group is defined'
+
 - name: 'Create systemd drop-in if v2 needs to be enabled'
   ansible.builtin.include_tasks: enable_api_v2.yml
   when:
