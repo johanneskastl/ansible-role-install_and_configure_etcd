@@ -15,8 +15,8 @@
   ansible.builtin.set_fact:
     etcd_initial_cluster: "{{ etcd_initial_cluster | regex_replace(',$', '') }}"
 
-- name: debug
-  debug:
+- name: 'Show content of variable etcd_initial_cluster'
+  ansible.builtin.debug:
     var: etcd_initial_cluster
 
 - name: 'Set etcd_name to inventory hostname'
