@@ -31,7 +31,7 @@ Role Variables
 
 These variables have sensible defaults, but should most probably be overwritten by the user.
 
-- `etcd_name`: name of the etcd cluster (default: `default`)
+- `etcd_name`: Human-readable name for this member (default: `default`)
 - `etcd_listen_peer_urls`: List of URLs to listen on for peer traffic (default: `http://localhost:2380`)
 - `etcd_listen_client_urls`: List of URLs to listen on for client traffic (default: `http://localhost:2379`)
 - `etcd_advertise_client_urls`: List of client URLs (of the actual node we are configuring) to advertise to the public (default: `http://localhost:2379`)
@@ -44,6 +44,12 @@ These settings are only used if the user has defined the variables.
 - `etcd_initial_cluster`: initial cluster configuration for bootstrapping, something like `default=http://localhost:2380`
 - `etcd_initial_cluster_state`: initial cluster state ('new' or 'existing')
 - `etcd_initial_cluster_token`: initial cluster token for the etcd cluster during bootstrap. Specifying this can protect you from unintended cross-cluster interaction when running multiple clusters
+
+In case you want to setup a cluster of etcd servers, you can omit the variables `etcd_name` and `etcd_initial_cluster` and only the `etcd_servers_group`:
+
+- `etcd_servers_group`: name of a Ansible group of hosts, which will be used as servers for etcd
+
+The role automatically builds the long string, consisting of "hostname" plus "hosts's IP address plus port" for each of the servers, and uses this string as input for `etcd_initial_cluster`. In addition, if you specify `etcd_servers_group`, the variable `etcd_name ` will be set to each server's hostname.
 
 Dependencies
 ------------
