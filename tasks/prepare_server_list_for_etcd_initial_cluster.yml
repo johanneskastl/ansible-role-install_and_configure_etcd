@@ -18,3 +18,7 @@
 - name: debug
   debug:
     var: etcd_initial_cluster
+
+- name: 'Set etcd_name to inventory hostname'
+  ansible.builtin.set_fact:
+    etcd_name: "{{ inventory_hostname }}"
