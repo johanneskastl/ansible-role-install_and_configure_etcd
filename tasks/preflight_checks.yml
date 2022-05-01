@@ -1,0 +1,16 @@
+---
+# install_and_configure_etcd/tasks/preflight_checks.yml
+
+- name: 'Fail if both etcd_initial_cluster and etcd_servers_group are undefined'
+  ansible.builtin.fail:
+    msg: 'You MUST set either etcd_initial_cluster or etcd_servers_group for this role to work'
+  when:
+    - 'etcd_initial_cluster is undefined'
+    - 'etcd_servers_group is undefined'
+
+- name: 'Fail if both etcd_initial_cluster and etcd_servers_group are set'
+  ansible.builtin.fail:
+    msg: 'You cannot specify both etcd_initial_cluster and etcd_servers_group at the same time'
+  when:
+    - 'etcd_initial_cluster is defined'
+    - 'etcd_servers_group is defined'
