@@ -8,7 +8,7 @@
 - name: 'Create string with hostname and IP address for each hosts and add to variable etcd_initial_cluster'
   ansible.builtin.set_fact:
     etcd_initial_cluster:
-      "{{ etcd_initial_cluster  + hostvars[item]['inventory_hostname'] + '=http://' + hostvars[item]['ansible_default_ipv4']['address'] + ':2380,' }}"
+      "{{ etcd_initial_cluster + hostvars[item]['inventory_hostname'] + '=http://' + hostvars[item]['ansible_default_ipv4']['address'] + ':2380,' }}"
   with_items: "{{ groups[etcd_servers_group] }}"
 
 - name: 'Remove trailing comma in variable etcd_initial_cluster'
