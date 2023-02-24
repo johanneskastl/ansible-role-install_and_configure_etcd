@@ -1,7 +1,7 @@
 ---
 # install_and_configure_etcd/tasks/enable_api_v2.yml
 
-- name: "Create directory {{ systemd_unit_path }}/{{ systemd_unit_name }}.d/"
+- name: "Create drop-in directory for {{ systemd_unit_name }}"
   ansible.builtin.file:
     path: "{{ systemd_unit_path }}/{{ systemd_unit_name }}.d/"
     state: 'directory'
