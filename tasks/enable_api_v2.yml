@@ -18,4 +18,4 @@
     mode: '0644'
   notify:
     - 'Trigger systemctl daemon-reload'
-    - 'restart the etcd service'
+    - 'Restart the etcd service'

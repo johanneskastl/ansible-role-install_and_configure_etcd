@@ -40,7 +40,7 @@
     group: 'root'
     mode: '0600'
   notify:
-    - 'restart the etcd service'
+    - 'Restart the etcd service'
 
 - name: 'Start and enable the etcd service'
   ansible.builtin.service:

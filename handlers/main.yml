@@ -5,7 +5,7 @@
   ansible.builtin.systemd:
     daemon_reload: 'yes'
 
-- name: 'restart the etcd service'
+- name: 'Restart the etcd service'
   ansible.builtin.service:
     name: "{{ systemd_unit_name }}"
     state: 'restarted'
